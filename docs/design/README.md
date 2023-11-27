@@ -10,39 +10,41 @@
 @startuml
   entity User <<ENTITY>> {
     id:NUMBER
+    job:TEXT
     usersname:TEXT
     password:TEXT
     mail:TEXT
   }
   entity Expert <<ENTITY>>{
     id:NUMBER
-    job:TEXT
+    usersname:TEXT
+    password:TEXT
+    mail:TEXT
   }
   entity Quiz <<ENTITY>>{
     id:NUMBER
     text:TEXT
     topic:TEXT
-    date:DATE
   }
   entity Question <<ENTITY>>{
     id:NUMBER
     text:TEXT
   }
   entity Option <<ENTITY>>{
-		id:NUMBER
-    text:TEXT    
-	}
+    id:NUMBER
+    text:TEXT
+  }
   entity SelectedOption {
-		id:NUMBER
+    id:NUMBER
   }
   entity CompletedSurvey {
-		id:NUMBER
+    id:NUMBER
     userID:NUMBER
     topic:TEXT
     text:TEXT
   }
   entity Result {
-		id:NUMBER
+    id:NUMBER
     quizID:NUMBER
     mostPopularOptionsID:NUMBER
     text:TEXT
