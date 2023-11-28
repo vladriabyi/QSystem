@@ -7,31 +7,89 @@
 ## Модель бізнес-об'єктів
 @startuml
 
-entity User <> entity User.id <> #ffffff entity User.job  <> #ffffff entity User.usersname <> #ffffff entity User.password <> #ffffff entity User.mail <> #ffffff
-entity Expert <> entity Expert.id <> #ffffff entity Expert.usersname <> #ffffff entity Expert.password <> #ffffff entity Expert.mail <> #ffffff
-entity Quiz <> entity Quiz.id <> #ffffff entity Quiz.text <> #ffffff entity Quiz.topic <> #ffffff
-entity Question <> entity Question.id <> #ffffff entity Question.text <> #ffffff
-entity Option <> entity Option.id <> #ffffff entity Option.id <> #ffffff
-entity SelectedOption <> entity SelectedOption.id <> #ffffff
-entity CompletedSurvey <> entity CompletedSurvey.id <> #ffffff entity CompletedSurvey.userID <> #ffffff entity CompletedSurvey.topic <> #ffffff entity CompletedSurvey.text <> #ffffff
-entity Result <> entity Result.id <> #ffffff entity Result.quizID <> #ffffff entity Result.mostPopularOptionsID <> #ffffff entity Result.text <> #ffffff
-User.id -u-* User.job -u-* User.usersname -u-* User.password -u-* User.mail -u-* User
-Expert.id -u-* Expert.usersname -u-* Expert.password -u-* Expert.mail -u-* Expert
-Quiz.id -u-* Quiz.text -u-* Quiz.topic -u-* Quiz
-Question.id -u-* Question.text -u-* Question
-Option.id -u-* User.job -u-* Option
-SelectedOption.id -u-* SelectedOption
-CompletedSurvey.id -u-* CompletedSurvey.userID -u-* CompletedSurvey.topic -u-* CompletedSurvey.text -u-* CompletedSurvey
-Result.id -u-* Result.quizID -u-* Result.mostPopularOptionsID -u-* Result.text -u-* Result
-User "1, 1" -u- "1, 1" Expert
-User "1, 1" -u- "0, *" CompletedSurvey
-Expert "1, 1" -u- "0, *" Quiz
-Quiz "1, 1" -u- "0, *" Question
-Quiz "1, 1" -u- "1, 1" Result
-Quiz "1, 1" -u- "0, *" CompletedSurvey
-Question "1, 1"-u- "0, *" Option
-Question "1, 1" -u- "0, *" SelectedOption
-SelectedOption "0, *" -u- "1, 1" CompletedSurvey
+entity User <<ENTITY>> #999000
+entity User.id <<NUMBER>> 
+entity User.job  <<TEXT>> 
+entity User.usersname <<TEXT>> 
+entity User.password <<TEXT>> 
+entity User.mail <<TEXT>> 
+
+entity Expert <<ENTITY>> #099900
+entity Expert.id <<NUMBER>> 
+entity Expert.usersname <<TEXT>> 
+entity Expert.password <<TEXT>> 
+entity Expert.mail <<TEXT>> 
+
+entity Quiz <<ENTITY>> #009990
+entity Quiz.id <<NUMBER>> 
+entity Quiz.text <<TEXT>> 
+entity Quiz.topic <<TEXT>> 
+
+entity Question <<ENTITY>> #000999
+entity Question.id <<NUMBER>> 
+entity Question.text <<TEXT>> 
+
+entity Option <<ENTITY>> #900099
+entity Option.id <<NUMBER>> 
+entity Option.text <<TEXT>> 
+
+entity SelectedOption <<ENTITY>> #990009
+entity SelectedOption.id <<NUMBER>> 
+
+entity CompletedSurvey <<ENTITY>> #090909
+entity CompletedSurvey.id <<NUMBER>> 
+entity CompletedSurvey.userID <<NUMBER>> 
+entity CompletedSurvey.topic <<TEXT>> 
+entity CompletedSurvey.text <<TEXT>> 
+
+entity Result <<ENTITY>> #909090
+entity Result.id <<NUMBER>> 
+entity Result.quizID <<NUMBER>> 
+entity Result.mostPopularOptionsID <<NUMBER>> 
+entity Result.text <<TEXT>> 
+
+User <-- User.id
+User <-- User.job
+User <-- User.usersname
+User <-- User.password
+User <-- User.mail
+
+Expert <-- Expert.id
+Expert <-- Expert.usersname
+Expert <-- Expert.password
+Expert <-- Expert.mail
+
+Quiz <-- Quiz.id
+Quiz <-- Quiz.text
+Quiz <-- Quiz.topic
+
+Question <-- Question.id
+Question <-- Question.text
+
+Option <-- Option.id
+Option <-- Option.text
+
+SelectedOption <-- SelectedOption.id
+
+CompletedSurvey <-- CompletedSurvey.id
+CompletedSurvey <-- CompletedSurvey.userID
+CompletedSurvey <-- CompletedSurvey.topic
+CompletedSurvey <-- CompletedSurvey.text
+
+Result <-- Result.id
+Result <-- Result.quizID
+Result <-- Result.mostPopularOptionsID
+Result <-- Result.text
+
+User "1, 1" -- "1, 1" Expert
+User "1, 1" -- "0, *" CompletedSurvey
+Expert "1, 1" -- "0, *" Quiz
+Quiz "1, 1" -- "0, *" Question
+Quiz "1, 1" -- "1, 1" Result
+Quiz "1, 1" -- "0, *" CompletedSurvey
+Question "1, 1"-- "0, *" Option
+Question "1, 1" -- "0, *" SelectedOption
+SelectedOption "0, *" -- "1, 1" CompletedSurvey
 
 @enduml
 
