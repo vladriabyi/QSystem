@@ -90,3 +90,7 @@ SelectedOption "0, *" -u- "1, 1" CompletedSurvey
   CompletedSurvey "0, *" -u- "1, 1" Quiz
   CompletedSurvey "0, *" -u- "1, 1" User
 @enduml
+
+## Реляційна схема
+
+![Реляційна схема](https://github.com/REFLAXua/QSystem/raw/master/docs/.vuepress/public/image_2023-11-27_12-34-32.png)
