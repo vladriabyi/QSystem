@@ -81,7 +81,7 @@ Result *-- Result.quizID
 Result *-- Result.mostPopularOptionsID
 Result *-- Result.text
 
-User "1, 1" -- "1, 1" Expert
+User "1, 0" -- "1, 1" Expert
 User "1, 1" -- "0, *" CompletedSurvey
 Expert "1, 1" -- "0, *" Quiz
 Quiz "1, 1" -- "0, *" Question
