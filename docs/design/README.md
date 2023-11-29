@@ -48,38 +48,38 @@ entity Result.quizID <<NUMBER>>
 entity Result.mostPopularOptionsID <<NUMBER>> 
 entity Result.text <<TEXT>> 
 
-User <-- User.id
-User <-- User.job
-User <-- User.usersname
-User <-- User.password
-User <-- User.mail
+User *-- User.id
+User *-- User.job
+User *-- User.usersname
+User *-- User.password
+User *-- User.mail
 
-Expert <-- Expert.id
-Expert <-- Expert.usersname
-Expert <-- Expert.password
-Expert <-- Expert.mail
+Expert *-- Expert.id
+Expert *-- Expert.usersname
+Expert *-- Expert.password
+Expert *-- Expert.mail
 
-Quiz <-- Quiz.id
-Quiz <-- Quiz.text
-Quiz <-- Quiz.topic
+Quiz *-- Quiz.id
+Quiz *-- Quiz.text
+Quiz *-- Quiz.topic
 
-Question <-- Question.id
-Question <-- Question.text
+Question *-- Question.id
+Question *-- Question.text
 
-Option <-- Option.id
-Option <-- Option.text
+Option *-- Option.id
+Option *-- Option.text
 
-SelectedOption <-- SelectedOption.id
+SelectedOption *-- SelectedOption.id
 
-CompletedSurvey <-- CompletedSurvey.id
-CompletedSurvey <-- CompletedSurvey.userID
-CompletedSurvey <-- CompletedSurvey.topic
-CompletedSurvey <-- CompletedSurvey.text
+CompletedSurvey *-- CompletedSurvey.id
+CompletedSurvey *-- CompletedSurvey.userID
+CompletedSurvey *-- CompletedSurvey.topic
+CompletedSurvey *-- CompletedSurvey.text
 
-Result <-- Result.id
-Result <-- Result.quizID
-Result <-- Result.mostPopularOptionsID
-Result <-- Result.text
+Result *-- Result.id
+Result *-- Result.quizID
+Result *-- Result.mostPopularOptionsID
+Result *-- Result.text
 
 User "1, 1" -- "1, 1" Expert
 User "1, 1" -- "0, *" CompletedSurvey
