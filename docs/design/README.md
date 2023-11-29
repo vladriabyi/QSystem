@@ -85,7 +85,7 @@ User "1, 0" -- "1, 1" Expert
 User "1, 1" -- "0, *" CompletedSurvey
 Expert "1, 1" -- "0, *" Quiz
 Quiz "1, 1" -- "0, *" Question
-Quiz "1, 1" -- "1, 1" Result
+Quiz "1, 1" -- "0, *" Result
 Quiz "1, 1" -- "0, *" CompletedSurvey
 Question "1, 1"-- "0, *" Option
 Question "1, 1" -- "0, *" SelectedOption
