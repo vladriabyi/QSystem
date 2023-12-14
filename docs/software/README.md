@@ -1,6 +1,8 @@
 # Реалізація інформаційного та програмного забезпечення
 
-- SQL-скрипт для створення на початкового наповнення бази даних
+## SQL-скрипт для створення на початкового наповнення бази даних
+    
+```sql
 
 -- MySQL Workbench Forward Engineering
 
@@ -182,5 +184,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-- RESTfull сервіс для управління даними
+```
+
+## RESTfull сервіс для управління даними
 
