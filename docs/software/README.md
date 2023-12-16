@@ -116,6 +116,26 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `survey system`.`completed survey`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `survey system`.`completed survey` ;
+
+CREATE TABLE IF NOT EXISTS `survey system`.`completed survey` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `topic` VARCHAR(45) NOT NULL,
+  `text` VARCHAR(45) NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_completed survey_user1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_completed survey_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `survey system`.`user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `survey system`.`selected option`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `survey system`.`selected option` ;
@@ -123,11 +143,18 @@ DROP TABLE IF EXISTS `survey system`.`selected option` ;
 CREATE TABLE IF NOT EXISTS `survey system`.`selected option` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `question_id` INT UNSIGNED NOT NULL,
+  `completed survey_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_selected option_question1_idx` (`question_id` ASC) VISIBLE,
+  INDEX `fk_selected option_completed survey1_idx` (`completed survey_id` ASC) VISIBLE,
   CONSTRAINT `fk_selected option_question1`
     FOREIGN KEY (`question_id`)
     REFERENCES `survey system`.`question` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_selected option_completed survey1`
+    FOREIGN KEY (`completed survey_id`)
+    REFERENCES `survey system`.`completed survey` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -153,36 +180,10 @@ CREATE TABLE IF NOT EXISTS `survey system`.`result` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `survey system`.`completed survey`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `survey system`.`completed survey` ;
-
-CREATE TABLE IF NOT EXISTS `survey system`.`completed survey` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `topic` VARCHAR(45) NOT NULL,
-  `text` VARCHAR(45) NOT NULL,
-  `user_id` INT UNSIGNED NOT NULL,
-  `selected option_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_completed survey_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_completed survey_selected option1_idx` (`selected option_id` ASC) VISIBLE,
-  CONSTRAINT `fk_completed survey_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `survey system`.`user` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_completed survey_selected option1`
-    FOREIGN KEY (`selected option_id`)
-    REFERENCES `survey system`.`selected option` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 ```
 
